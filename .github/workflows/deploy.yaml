@@ -27,8 +27,11 @@ jobs:
 
       - name: Run tests
         working-directory: test-fastapi
+        env:
+          DATABASE_URL: sqlite:///./test.db
         run: |
           pytest
+
 
       - name: Deploy to Render
         run: curl -f -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
