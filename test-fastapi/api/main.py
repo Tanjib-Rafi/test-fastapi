@@ -6,9 +6,14 @@ from api.routers import traffic
 from api.database import Base, engine
 from models import models
 
-app = FastAPI()
-app.include_router(traffic.router)
+from contextlib import asynccontextmanager
 
-@app.on_event("startup")
-def on_startup():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: Create tables
     Base.metadata.create_all(bind=engine)
+    yield
+    # Shutdown: (nothing needed for now)
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(traffic.router)

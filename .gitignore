@@ -13,6 +13,8 @@ env/
 **/.pytest_cache/
 **/.coverage
 **/htmlcov/
+**/*.db
+
 
 # IDEs
 .vscode/

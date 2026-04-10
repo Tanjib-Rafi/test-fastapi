@@ -9,7 +9,7 @@ class TrafficService:
 
     @staticmethod
     def create_traffic(db: Session, data: TrafficCreate):
-        traffic = TrafficData(**data.dict())
+        traffic = TrafficData(**data.model_dump())
 
         db.add(traffic)
         db.commit()
@@ -22,7 +22,8 @@ class TrafficService:
 
     @staticmethod
     def bulk_insert(db: Session, data_list: List[TrafficCreate]):
-        objects = [TrafficData(**data.dict()) for data in data_list]
+        objects = [TrafficData(**data.model_dump()) for data in data_list]
+
 
         db.bulk_save_objects(objects)
         db.commit()
