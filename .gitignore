@@ -4,14 +4,15 @@ venv/
 env/
 
 # Python cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/*.pyd
 
 # Testing
-.pytest_cache/
-.coverage
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
 
 # IDEs
 .vscode/

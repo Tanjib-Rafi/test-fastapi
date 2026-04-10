@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-
+from api.database import get_db
 from api.schemas.schemas import TrafficCreate, TrafficBulkCreate, TrafficResponse
-from models.models import get_db, TrafficData
+from models.models import TrafficData
 from api.services.traffic_service import TrafficService
 
 router = APIRouter(prefix="/traffic", tags=["Traffic"])
